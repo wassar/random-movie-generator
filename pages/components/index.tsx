@@ -1,3 +1,2 @@
-export { default as RandomMovieCard } from "./movie-card";
-
-export { default as NeonButton } from "./_neon.button";
+export { default as MovieCard } from "./movie-card";
+//export * from "./ui";

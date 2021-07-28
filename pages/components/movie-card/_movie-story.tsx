@@ -19,6 +19,7 @@ const Story: React.FC<StoryProps> = ({ overview }) => {
 
         //eslint-disable-next-line
     }, [overview]);
+
     return (
         <>
             <Typography paragraph>{story}</Typography>

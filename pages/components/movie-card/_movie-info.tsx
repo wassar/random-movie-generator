@@ -1,6 +1,5 @@
-import { Breadcrumbs, Typography } from "@material-ui/core";
+import { Breadcrumbs, Typography, Paper } from "@material-ui/core";
 import LanguageFlag from "../ui/_language-flag";
-import MovieRating from "../ui/_rating";
 
 export interface MovieInfoProps {
     runtime: number;
