@@ -1,22 +1,6 @@
-import { makeStyles, Typography, CircularProgress } from "@material-ui/core";
-
-const useStyles = () =>
-    makeStyles({
-        root: {
-            position: "relative",
-            display: "inline-flex",
-        },
-        rating: {
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0,
-            position: "absolute",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-        },
-    });
+import { Typography, CircularProgress } from "@material-ui/core";
+import PropTypes from "prop-types";
+import { useRatingStyles as useStyles } from "./styles";
 
 export interface MovieRatingProps {
     rating: number;
@@ -40,4 +24,7 @@ const MovieRating: React.FC<MovieRatingProps> = ({ rating }) => {
     );
 };
 
+MovieRating.propTypes = {
+    rating: PropTypes.number.isRequired,
+};
 export default MovieRating;

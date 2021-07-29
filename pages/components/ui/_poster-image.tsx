@@ -1,33 +1,14 @@
+import PropTypes from "prop-types";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core";
-import SkeletonComponent from "./_skeleton";
+import { SkeletonComponent } from ".";
 
-const useStyles = () =>
-    makeStyles((theme) => ({
-        borderRadius: {
-            borderRadius: theme.spacing(1),
-        },
-        root: {
-            position: "relative",
-            borderRadius: theme.spacing(1),
-            overflow: "hidden",
-            minHeight: 87,
-        },
-        overlay: {
-            position: "absolute",
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            transform: "none",
-        },
-    }));
+import { usePosterStyles as useStyles } from "./styles";
 
 interface PosterImageProps {
     poster_path: string;
     title: string;
-    size: string;
+    size: posterImageSize;
     isLoading?: boolean;
 }
 
@@ -41,14 +22,13 @@ const PosterImage: React.FC<PosterImageProps> = ({
     const [imageId, setImageId] = useState(poster_path);
 
     const styles = useStyles()();
+
     useEffect(() => {
         setIsImageLoaded(!isLoading);
         setImageId(isLoading ? "" : poster_path);
     }, [isLoading, poster_path]);
 
-    const handleImageLoaded = () => {
-        setIsImageLoaded(true);
-    };
+    const handleImageLoaded = () => setIsImageLoaded(true);
 
     return (
         <div className={styles.root}>
@@ -62,7 +42,7 @@ const PosterImage: React.FC<PosterImageProps> = ({
                     onLoad={handleImageLoaded}
                 />
             )}
-            {!isImageLoaded && isLoading ? (
+            {!isImageLoaded ? (
                 <SkeletonComponent
                     className={styles.overlay}
                     animation="wave"
@@ -72,6 +52,12 @@ const PosterImage: React.FC<PosterImageProps> = ({
             )}
         </div>
     );
+};
+
+PosterImage.propTypes = {
+    poster_path: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    size: PropTypes.oneOf(["w92", "w154", "w185", "w342", "w500", "w780"]),
 };
 
 export default PosterImage;

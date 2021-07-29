@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { Typography } from "@material-ui/core";
 
@@ -9,12 +10,13 @@ const Story: React.FC<StoryProps> = ({ overview }) => {
     const [story, setStory] = useState(overview);
 
     useEffect(() => {
-        if (overview.length > parseInt(process.env.MAX_STORY_LENGTH!)) {
-            const subs = overview.substr(
-                0,
-                parseInt(process.env.MAX_STORY_LENGTH!) - 3
-            );
-            setStory(`${subs.substr(0, subs.lastIndexOf(" "))}... `);
+        const maxLength = parseInt(process.env.MAX_STORY_LENGTH!) - 3;
+        // checks for long movie story
+        if (overview.length > maxLength) {
+            //export ideal size excerpt with complete word at the end
+            const subs = overview.substr(0, maxLength).lastIndexOf(" ");
+
+            setStory(`${overview.substr(0, subs)}...`);
         } else setStory(overview);
 
         //eslint-disable-next-line
@@ -25,6 +27,10 @@ const Story: React.FC<StoryProps> = ({ overview }) => {
             <Typography paragraph>{story}</Typography>
         </>
     );
+};
+
+Story.propTypes = {
+    overview: PropTypes.string.isRequired,
 };
 
 export default Story;

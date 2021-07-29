@@ -1,10 +1,11 @@
-import { Breadcrumbs, Typography, Paper } from "@material-ui/core";
+import PropTypes from "prop-types";
+import { Breadcrumbs, Typography } from "@material-ui/core";
 import LanguageFlag from "../ui/_language-flag";
 
 export interface MovieInfoProps {
-    runtime: number;
-    release_date: string;
-    original_language: string;
+    runtime?: number;
+    release_date?: string;
+    original_language?: string;
 }
 
 const MovieInfo: React.FC<MovieInfoProps> = ({
@@ -28,6 +29,12 @@ const MovieInfo: React.FC<MovieInfoProps> = ({
             )}
         </Breadcrumbs>
     );
+};
+
+MovieInfo.propTypes = {
+    runtime: PropTypes.number,
+    release_date: PropTypes.string,
+    original_language: PropTypes.string,
 };
 
 export default MovieInfo;

@@ -31,7 +31,7 @@ const Home: React.FC<{ initialMovie: movieProps }> = ({ initialMovie }) => {
     return (
         <div className={styles.root}>
             <div>
-                {movie && <MovieCard isLoading={isLoading} {...movie} />}
+                {movie && <MovieCard isLoading={isLoading} movie={movie} />}
                 <div className={styles.refreshButtonContainer}>
                     <Button
                         size="large"

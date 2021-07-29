@@ -101,6 +101,8 @@ declare global {
         casts?: castsProps[];
         similar?: similarProps;
     }
+
+    type posterImageSize = "w92" | "w154" | "w185" | "w342" | "w500" | "w780";
 }
 
 export {};

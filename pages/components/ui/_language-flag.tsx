@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import CountryFlag from "react-country-flag";
 import { laguageToCountryCodeList } from "../../../defaults";
 
@@ -21,6 +22,10 @@ const LanguageFlag: React.FC<LanguageFlagProps> = ({ original_language }) => {
             />
         </>
     );
+};
+
+LanguageFlag.propTypes = {
+    original_language: PropTypes.string.isRequired,
 };
 
 export default LanguageFlag;

@@ -1,5 +1,5 @@
+import PropTypes from "prop-types";
 import { Typography } from "@material-ui/core";
-import { Skeleton } from "@material-ui/lab";
 import { Poster, Rating, SkeletonComponent } from "../ui";
 
 import MovieGenres from "./_movie-genres-list";
@@ -8,14 +8,14 @@ import Story from "./_movie-story";
 
 import { useCardContainerStyles as useStyles } from "./styles";
 
-interface MovieCardProps extends movieProps {
+interface MovieCardProps {
     isLoading: boolean;
+    movie: movieProps;
 }
 
-const MovieCardProps: React.FC<MovieCardProps> = (props) => {
+const MovieCard: React.FC<MovieCardProps> = ({ movie, isLoading }) => {
     const styles = useStyles()();
     const {
-        isLoading,
         title,
         backdrop_path,
         poster_path,
@@ -25,7 +25,7 @@ const MovieCardProps: React.FC<MovieCardProps> = (props) => {
         original_language,
         vote_average,
         overview,
-    } = props;
+    } = movie;
     return (
         <div
             className={styles.root}
@@ -48,7 +48,7 @@ const MovieCardProps: React.FC<MovieCardProps> = (props) => {
                             {isLoading ? (
                                 <SkeletonComponent
                                     animation="wave"
-                                    variant="text"
+                                    //variant="text"
                                 />
                             ) : (
                                 title
@@ -89,9 +89,19 @@ const MovieCardProps: React.FC<MovieCardProps> = (props) => {
                 <div className={styles.storyWrapper}>
                     {isLoading ? (
                         <>
-                            <SkeletonComponent animation="wave" />
-                            <SkeletonComponent animation="wave" />
-                            <SkeletonComponent animation="wave" width="75%" />
+                            <SkeletonComponent
+                                variant="text"
+                                animation="wave"
+                            />
+                            <SkeletonComponent
+                                variant="text"
+                                animation="wave"
+                            />
+                            <SkeletonComponent
+                                variant="text"
+                                animation="wave"
+                                width="75%"
+                            />
                         </>
                     ) : (
                         <Story overview={overview} />
@@ -102,4 +112,8 @@ const MovieCardProps: React.FC<MovieCardProps> = (props) => {
     );
 };
 
-export default MovieCardProps;
+MovieCard.propTypes = {
+    isLoading: PropTypes.bool.isRequired,
+};
+
+export default MovieCard;
