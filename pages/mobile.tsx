@@ -17,11 +17,18 @@ const useStyles = (backdrop: string) =>
         root: {
             borderRadius: theme.spacing(2),
             margin: theme.spacing(2),
+            maxHeight: "95vh",
             overflow: "hidden",
             boxShadow: `0px 0px 150px -45px ${alpha(
                 theme.palette.primary.light,
                 0.7
             )}`,
+            backgroundImage: `url(/images/w780${backdrop})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "top center",
+            backgroundAttachment: "fixed",
+
+            //
         },
         card: {
             background: theme.palette.background.default,
@@ -30,10 +37,9 @@ const useStyles = (backdrop: string) =>
             background: `linear-gradient(to bottom, ${alpha(
                 theme.palette.background.default,
                 0.2
-            )} 0%, ${
-                theme.palette.background.default
-            } 100%), url(/images/w780${backdrop}) no-repeat 50% 50%`,
+            )} 0%, ${theme.palette.background.default} 100%)`,
             height: 320,
+            maxHeight: "45vh",
         },
         cardHeader: {
             display: "flex",
@@ -48,9 +54,9 @@ const useStyles = (backdrop: string) =>
         },
 
         cardHeaderContent: {
-            paddingLeft: theme.spacing(1),
-
             position: "relative",
+            paddingLeft: theme.spacing(1),
+            flexGrow: 1,
         },
         cardBody: {
             padding: theme.spacing(1),
