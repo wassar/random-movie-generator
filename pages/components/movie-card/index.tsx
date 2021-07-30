@@ -100,6 +100,10 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, isLoading }) => {
                             <SkeletonComponent
                                 variant="text"
                                 animation="wave"
+                            />
+                            <SkeletonComponent
+                                variant="text"
+                                animation="wave"
                                 width="75%"
                             />
                         </>
