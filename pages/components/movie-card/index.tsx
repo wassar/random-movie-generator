@@ -26,6 +26,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, isLoading }) => {
         vote_average,
         overview,
     } = movie;
+
     return (
         <div
             className={styles.root}

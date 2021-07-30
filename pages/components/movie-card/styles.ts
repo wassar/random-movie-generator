@@ -7,7 +7,7 @@ export const useCardContainerStyles = () =>
             width: 820,
             maxWidth: "100%",
             borderRadius: theme.spacing(2),
-            background: "#000",
+            background: theme.palette.background.default,
             backgroundRepeat: "no-repeat !important",
             backgroundPosition: "right center !important",
             boxShadow: `0px 0px 150px -45px ${alpha(
