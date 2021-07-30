@@ -1,6 +1,6 @@
-import { Api } from "./core";
+import { Api } from "../core";
 
-import MobileCard from "./components/mobile-card";
+import MobileCard from "../components/mobile-card";
 import { useMediaQuery, useTheme } from "@material-ui/core";
 
 export const getStaticProps = async () => {

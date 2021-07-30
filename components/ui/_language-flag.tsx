@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import CountryFlag from "react-country-flag";
-import { laguageToCountryCodeList } from "../../../defaults";
+import { laguageToCountryCodeList } from "../../defaults";
 
 export interface LanguageFlagProps {
     original_language: string;

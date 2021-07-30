@@ -1,4 +1,4 @@
-import { Api } from "../core";
+import { Api } from "../../core";
 import { NextApiRequest, NextApiResponse } from "next";
 const randomMovieController = async (
     req: NextApiRequest,

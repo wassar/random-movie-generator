@@ -1,14 +1,14 @@
-import { Api } from "./core";
+import { Api } from "../core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 import { Button } from "@material-ui/core";
 import { RefreshRounded as RefershIcon } from "@material-ui/icons";
 
-import { MovieCard } from "./components";
-import { ReloadingIcon } from "./components/ui";
+import { MovieCard } from "../components";
+import { ReloadingIcon } from "../components/ui";
 
-import { useMovieCardStyles as useStyles } from "./components/movie-card/styles";
+import { useMovieCardStyles as useStyles } from "../components/movie-card/styles";
 
 const Home: React.FC<{ initialMovie: movieProps }> = ({ initialMovie }) => {
     const [movie, setMovie] = useState(initialMovie);
