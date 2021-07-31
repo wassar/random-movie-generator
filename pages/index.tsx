@@ -1,5 +1,15 @@
-const Home: React.FC = () => {
-    return <h1> Home Page</h1>;
+import { Api } from "../core";
+import MoviePage from "../components/pages/movie-page";
+
+const HomePage: React.FC<{ movie: movieProps }> = ({ movie }) => {
+    return <MoviePage initialMovie={movie} />;
 };
 
-export default Home;
+export const getStaticProps = async () => {
+    const movie = await Api.getRandomMovie();
+    return {
+        props: { movie },
+    };
+};
+
+export default HomePage;

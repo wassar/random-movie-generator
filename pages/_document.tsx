@@ -9,8 +9,20 @@ export default class MyDocument extends Document {
             <Html lang="en">
                 <Head>
                     <meta
+                        name="description"
+                        content="Random movies generator to help you pick your next movie"
+                    />
+                    <meta
+                        name="keywords"
+                        content="movies, generator, random movie"
+                    />
+                    <meta
                         name="theme-color"
                         content={theme.palette.primary.main}
+                    />
+                    <meta
+                        name="viewport"
+                        content="width=device-width, initial-scale=1.0"
                     />
                 </Head>
                 <body>
