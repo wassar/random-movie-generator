@@ -2,8 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState, useContext } from "react";
 import { Typography } from "@material-ui/core";
 
-import { LoadingContexnt } from "../mobile-card/context";
-import { SkeletonComponent } from "../ui";
+import { SkeletonComponent, LoadingContexnt } from "..";
 
 export interface StoryProps {
     overview: string;

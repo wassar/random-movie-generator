@@ -4,18 +4,20 @@ import { Api } from "../core";
 
 import { Button } from "@material-ui/core";
 import { RefreshRounded as RefershIcon } from "@material-ui/icons";
-import { ReloadingIcon } from "../components/ui";
 
-import MobileCard from "../components/mobile-card";
-
-import { LoadingContexnt } from "../components/mobile-card/context";
+import { ReloadingIcon, MovieCard, LoadingContexnt } from "../components";
 
 const MobileMovieCard: React.FC<MoviePageProps> = ({ initialMovie }) => {
     const [movie, setMovie] = useState(initialMovie);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
 
+    // fetch the database for new movie
     const handleMovieRefresh = async () => {
+        /**
+         * ctatch and set api erros
+         * @param error {AxiosError}
+         */
         const handleResponseError = (error: AxiosError) => {
             if (error.response?.data.error_message)
                 setError(error.response?.data.error_message);
@@ -33,7 +35,7 @@ const MobileMovieCard: React.FC<MoviePageProps> = ({ initialMovie }) => {
     return (
         <>
             <LoadingContexnt.Provider value={isLoading}>
-                <MobileCard {...movie} />
+                <MovieCard {...movie} />
             </LoadingContexnt.Provider>
             <Button
                 onClick={handleMovieRefresh}

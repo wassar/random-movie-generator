@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
-import { SkeletonComponent } from ".";
 
-import { usePosterStyles as useStyles } from "./styles";
-import { LoadingContexnt } from "../mobile-card/context";
+import { SkeletonComponent, LoadingContexnt } from "..";
+
+import { usePosterStyles as useStyles } from "../ui/styles";
 
 interface PosterImageProps {
     poster_path: string;

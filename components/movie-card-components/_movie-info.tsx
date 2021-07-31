@@ -1,9 +1,8 @@
 import PropTypes from "prop-types";
-import { Breadcrumbs, Typography } from "@material-ui/core";
-import LanguageFlag from "../ui/_language-flag";
 import { useContext } from "react";
-import { LoadingContexnt } from "../mobile-card/context";
-import { SkeletonComponent } from "../ui";
+import { Breadcrumbs, Typography } from "@material-ui/core";
+
+import { SkeletonComponent, LoadingContexnt, LanguageFlag } from "..";
 
 export interface MovieInfoProps {
     runtime?: number;

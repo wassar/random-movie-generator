@@ -1,15 +1,19 @@
+import { useContext } from "react";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 
-import { Poster, Rating, SkeletonComponent } from "../ui";
-import MovieInfo from "../movie-card/_movie-info";
-import MovieGenres from "../movie-card/_movie-genres-list";
-import Story from "../movie-card/_movie-story";
+import {
+    Poster,
+    Rating,
+    SkeletonComponent,
+    MovieInfo,
+    MovieGenres,
+    Story,
+    LoadingContexnt,
+} from "../";
 
 import { useStyles } from "./styles";
-import { useContext } from "react";
-import { LoadingContexnt } from "./context";
 
-const MobileMovieCard: React.FC<movieProps> = (props) => {
+const MovieCard: React.FC<movieProps> = (props) => {
     const {
         title,
         poster_path,
@@ -64,4 +68,4 @@ const MobileMovieCard: React.FC<movieProps> = (props) => {
     );
 };
 
-export default MobileMovieCard;
+export default MovieCard;

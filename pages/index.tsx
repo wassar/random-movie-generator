@@ -8,7 +8,7 @@ import { RefreshRounded as RefershIcon } from "@material-ui/icons";
 import { MovieCard } from "../components";
 import { ReloadingIcon } from "../components/ui";
 
-import { useMovieCardStyles as useStyles } from "../components/movie-card/styles";
+import { useMovieCardStyles as useStyles } from "../components/movie-card-components/styles";
 
 export const isLoadingContext = createContext(true);
 

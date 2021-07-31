@@ -1,9 +1,10 @@
-import { Typography, CircularProgress } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { useContext } from "react";
-import { LoadingContexnt } from "../mobile-card/context";
+
+import { Typography, CircularProgress } from "@material-ui/core";
+import { LoadingContexnt, SkeletonComponent } from "..";
+
 import { useRatingStyles as useStyles } from "./styles";
-import SkeletonComponent from "./_skeleton";
 
 export interface MovieRatingProps {
     rating: number;

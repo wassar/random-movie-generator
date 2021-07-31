@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import { Breadcrumbs } from "@material-ui/core";
 import { useContext } from "react";
-import { LoadingContexnt } from "../mobile-card/context";
-import { SkeletonComponent } from "../ui";
+import { Breadcrumbs } from "@material-ui/core";
+
+import { SkeletonComponent, LoadingContexnt } from "../";
 
 interface MovieGenresProps {
     genres: genreProps[];
