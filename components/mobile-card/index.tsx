@@ -1,12 +1,13 @@
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 
-import { Poster, Rating } from "../ui";
-
+import { Poster, Rating, SkeletonComponent } from "../ui";
 import MovieInfo from "../movie-card/_movie-info";
 import MovieGenres from "../movie-card/_movie-genres-list";
 import Story from "../movie-card/_movie-story";
 
 import { useStyles } from "./styles";
+import { useContext } from "react";
+import { LoadingContexnt } from "./context";
 
 const MobileMovieCard: React.FC<movieProps> = (props) => {
     const {
@@ -17,6 +18,8 @@ const MobileMovieCard: React.FC<movieProps> = (props) => {
         vote_average,
         overview,
     } = props;
+
+    const isLoading = useContext(LoadingContexnt);
 
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up("small"));
@@ -39,7 +42,14 @@ const MobileMovieCard: React.FC<movieProps> = (props) => {
                         </div>
                         <div>
                             <Typography variant="h4">
-                                {props.title || "salamixs"}
+                                {isLoading ? (
+                                    <SkeletonComponent
+                                        animation="wave"
+                                        width="90%"
+                                    />
+                                ) : (
+                                    props.title
+                                )}
                             </Typography>
                             <MovieInfo {...props} />
                             <MovieGenres genres={genres} />

@@ -9,7 +9,8 @@ export const usePosterStyles = () =>
             position: "relative",
             borderRadius: theme.spacing(1),
             overflow: "hidden",
-            minHeight: 87,
+            minHeight: 111,
+            minWidth: 74,
         },
         overlay: {
             position: "absolute",

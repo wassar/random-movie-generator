@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Typography } from "@material-ui/core";
+
+import { LoadingContexnt } from "../mobile-card/context";
+import { SkeletonComponent } from "../ui";
 
 export interface StoryProps {
     overview: string;
@@ -8,6 +11,8 @@ export interface StoryProps {
 
 const Story: React.FC<StoryProps> = ({ overview }) => {
     const [story, setStory] = useState(overview);
+
+    const isLoading = useContext(LoadingContexnt);
 
     useEffect(() => {
         const maxLength = parseInt(process.env.MAX_STORY_LENGTH!) - 3;
@@ -24,7 +29,16 @@ const Story: React.FC<StoryProps> = ({ overview }) => {
 
     return (
         <>
-            <Typography paragraph>{story}</Typography>
+            {isLoading ? (
+                <>
+                    <SkeletonComponent animation="wave" />
+                    <SkeletonComponent animation="wave" />
+                    <SkeletonComponent animation="wave" />
+                    <SkeletonComponent animation="wave" width="70%" />
+                </>
+            ) : (
+                <Typography paragraph>{story}</Typography>
+            )}
         </>
     );
 };

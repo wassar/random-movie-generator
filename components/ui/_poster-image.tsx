@@ -1,25 +1,25 @@
 import PropTypes from "prop-types";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SkeletonComponent } from ".";
 
 import { usePosterStyles as useStyles } from "./styles";
+import { LoadingContexnt } from "../mobile-card/context";
 
 interface PosterImageProps {
     poster_path: string;
     title: string;
     size?: posterImageSize;
-    isLoading?: boolean;
 }
 
 const PosterImage: React.FC<PosterImageProps> = ({
     title,
     poster_path,
     size = "w92",
-    isLoading,
 }) => {
     const [isImageLoaded, setIsImageLoaded] = useState(false);
     const [imageId, setImageId] = useState(poster_path);
+    const isLoading = useContext(LoadingContexnt);
 
     const styles = useStyles()();
 
@@ -44,8 +44,8 @@ const PosterImage: React.FC<PosterImageProps> = ({
             )}
             {!isImageLoaded ? (
                 <SkeletonComponent
-                    className={styles.overlay}
                     animation="wave"
+                    className={styles.overlay}
                 />
             ) : (
                 <span className={styles.overlay} />

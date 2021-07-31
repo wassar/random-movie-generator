@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
 import { Breadcrumbs, Typography } from "@material-ui/core";
 import LanguageFlag from "../ui/_language-flag";
+import { useContext } from "react";
+import { LoadingContexnt } from "../mobile-card/context";
+import { SkeletonComponent } from "../ui";
 
 export interface MovieInfoProps {
     runtime?: number;
@@ -13,21 +16,31 @@ const MovieInfo: React.FC<MovieInfoProps> = ({
     runtime,
     original_language,
 }) => {
-    return (
-        <Breadcrumbs separator="&middot;">
-            {original_language && (
-                <LanguageFlag original_language={original_language} />
-            )}
+    const isLoading = useContext(LoadingContexnt);
 
-            {release_date && (
-                <Typography variant="subtitle1">
-                    {new Date(release_date).getUTCFullYear()}
-                </Typography>
+    return (
+        <>
+            {isLoading ? (
+                <SkeletonComponent animation="wave" />
+            ) : (
+                <Breadcrumbs separator="&middot;">
+                    {original_language && (
+                        <LanguageFlag original_language={original_language} />
+                    )}
+
+                    {release_date && (
+                        <Typography variant="subtitle1">
+                            {new Date(release_date).getUTCFullYear()}
+                        </Typography>
+                    )}
+                    {runtime && (
+                        <Typography variant="subtitle1">
+                            {runtime} min
+                        </Typography>
+                    )}
+                </Breadcrumbs>
             )}
-            {runtime && (
-                <Typography variant="subtitle1">{runtime} min</Typography>
-            )}
-        </Breadcrumbs>
+        </>
     );
 };
 

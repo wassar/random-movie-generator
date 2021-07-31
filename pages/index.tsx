@@ -1,6 +1,6 @@
 import { Api } from "../core";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 
 import { Button } from "@material-ui/core";
 import { RefreshRounded as RefershIcon } from "@material-ui/icons";
@@ -10,9 +10,12 @@ import { ReloadingIcon } from "../components/ui";
 
 import { useMovieCardStyles as useStyles } from "../components/movie-card/styles";
 
+export const isLoadingContext = createContext(true);
+
 const Home: React.FC<{ initialMovie: movieProps }> = ({ initialMovie }) => {
     const [movie, setMovie] = useState(initialMovie);
     const [isLoading, setIsLoading] = useState(false);
+
     const styles = useStyles()();
 
     useEffect(() => {
@@ -28,10 +31,14 @@ const Home: React.FC<{ initialMovie: movieProps }> = ({ initialMovie }) => {
             .catch((e) => console.log("Error Fetching Movie"));
     };
 
+    console.log({ isLoading });
+
     return (
         <div className={styles.root}>
             <div>
-                {movie && <MovieCard isLoading={isLoading} movie={movie} />}
+                <isLoadingContext.Provider value={isLoading}>
+                    <MovieCard isLoading={isLoading} movie={movie} />
+                </isLoadingContext.Provider>
                 <div className={styles.refreshButtonContainer}>
                     <Button
                         size="large"
