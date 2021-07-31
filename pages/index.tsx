@@ -1,8 +1,8 @@
 import { Api } from "../core";
-import MoviePage from "../components/pages/movie-page";
+import { RandomMoviePage } from "../components";
 
 const HomePage: React.FC<{ movie: movieProps }> = ({ movie }) => {
-    return <MoviePage initialMovie={movie} />;
+    return <RandomMoviePage initialMovie={movie} />;
 };
 
 export const getStaticProps = async () => {

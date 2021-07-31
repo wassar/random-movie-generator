@@ -10,11 +10,11 @@ export default class MyDocument extends Document {
                 <Head>
                     <meta
                         name="description"
-                        content="Random movies generator to help you pick your next movie"
+                        content="A random movie generator based on themoviedb.org API built with Next.js"
                     />
                     <meta
                         name="keywords"
-                        content="movies, generator, random movie"
+                        content="movies, generator, random, movie"
                     />
                     <meta
                         name="theme-color"
