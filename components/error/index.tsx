@@ -8,10 +8,12 @@ export interface ErrorProps {
 
 const Error: React.FC<ErrorProps> = ({ error }) => {
     return (
-        <div style={{ textAlign: "center" }}>
-            <Image src={errorImage} width={100} height={100} alt={error} />
-            <Typography variant="subtitle1">{error}</Typography>
-        </div>
+        <>
+            <div style={{ textAlign: "center" }}>
+                <Image src={errorImage} width={100} height={100} alt={error} />
+                <Typography variant="subtitle1">{error}</Typography>
+            </div>
+        </>
     );
 };
 

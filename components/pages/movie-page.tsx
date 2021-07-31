@@ -1,3 +1,4 @@
+import Head from "next/head";
 import axios, { AxiosError } from "axios";
 import React, { useState } from "react";
 
@@ -44,43 +45,50 @@ const MobileMovieCard: React.FC<{ initialMovie: movieProps }> = ({
     };
 
     return (
-        <div className={styles.root}>
-            <div className={styles.wrapper}>
-                {error ? (
-                    <Error error={error} />
-                ) : (
-                    <>
-                        <SwipableCard
-                            key={movie.id}
-                            onCardLeftScreen={handleMovieRefresh}
-                            preventSwipe={["bottom"]}
-                        >
-                            <LoadingContexnt.Provider value={isLoading}>
-                                <MovieCard {...movie} />
-                            </LoadingContexnt.Provider>
-                        </SwipableCard>
-                        <div className={styles.buttonContainer}>
-                            <Button
-                                onClick={handleMovieRefresh}
-                                color="primary"
-                                variant="contained"
-                                size="large"
-                                disabled={isLoading}
-                                startIcon={
-                                    isLoading ? (
-                                        <ReloadingIcon />
-                                    ) : (
-                                        <RefershIcon />
-                                    )
-                                }
+        <>
+            <Head>
+                <title>
+                    {error ? error : `What about watching ${movie.title}?`}
+                </title>
+            </Head>
+            <div className={styles.root}>
+                <div className={styles.wrapper}>
+                    {error ? (
+                        <Error error={error} />
+                    ) : (
+                        <>
+                            <SwipableCard
+                                key={movie.id}
+                                onCardLeftScreen={handleMovieRefresh}
+                                preventSwipe={["bottom"]}
                             >
-                                Next Movie
-                            </Button>
-                        </div>
-                    </>
-                )}
+                                <LoadingContexnt.Provider value={isLoading}>
+                                    <MovieCard {...movie} />
+                                </LoadingContexnt.Provider>
+                            </SwipableCard>
+                            <div className={styles.buttonContainer}>
+                                <Button
+                                    onClick={handleMovieRefresh}
+                                    color="primary"
+                                    variant="contained"
+                                    size="large"
+                                    disabled={isLoading}
+                                    startIcon={
+                                        isLoading ? (
+                                            <ReloadingIcon />
+                                        ) : (
+                                            <RefershIcon />
+                                        )
+                                    }
+                                >
+                                    Next Movie
+                                </Button>
+                            </div>
+                        </>
+                    )}
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
