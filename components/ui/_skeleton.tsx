@@ -1,4 +1,4 @@
-import { styled } from "@material-ui/styles";
+import { styled } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
 const SkeletonComponent = styled(Skeleton)(({ theme }) => ({

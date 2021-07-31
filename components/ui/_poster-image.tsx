@@ -8,7 +8,7 @@ import { usePosterStyles as useStyles } from "./styles";
 interface PosterImageProps {
     poster_path: string;
     title: string;
-    size: posterImageSize;
+    size?: posterImageSize;
     isLoading?: boolean;
 }
 

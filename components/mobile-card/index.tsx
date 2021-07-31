@@ -1,11 +1,12 @@
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 
 import { Poster, Rating } from "../ui";
+
 import MovieInfo from "../movie-card/_movie-info";
 import MovieGenres from "../movie-card/_movie-genres-list";
 import Story from "../movie-card/_movie-story";
 
-import { useMobileStyles, useDesktopStyles, useStyles } from "./styles";
+import { useStyles } from "./styles";
 
 const MobileMovieCard: React.FC<movieProps> = (props) => {
     const {
