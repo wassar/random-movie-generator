@@ -13,8 +13,8 @@ interface PosterImageProps {
 }
 
 const PosterImage: React.FC<PosterImageProps> = ({
-    title,
-    poster_path,
+    title = "",
+    poster_path = "",
     size = "w92",
 }) => {
     const [isImageLoaded, setIsImageLoaded] = useState(false);

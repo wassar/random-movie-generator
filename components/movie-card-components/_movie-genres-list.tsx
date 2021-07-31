@@ -8,7 +8,7 @@ interface MovieGenresProps {
     genres: genreProps[];
 }
 
-const MovieGenres: React.FC<MovieGenresProps> = ({ genres }) => {
+const MovieGenres: React.FC<MovieGenresProps> = ({ genres = [] }) => {
     const isLoading = useContext(LoadingContexnt);
     return (
         <>

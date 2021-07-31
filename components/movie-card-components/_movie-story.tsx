@@ -8,7 +8,7 @@ export interface StoryProps {
     overview: string;
 }
 
-const Story: React.FC<StoryProps> = ({ overview }) => {
+const Story: React.FC<StoryProps> = ({ overview = "" }) => {
     const [story, setStory] = useState(overview);
 
     const isLoading = useContext(LoadingContexnt);

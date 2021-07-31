@@ -3,6 +3,7 @@ export const useMobileStyles = (backdrop: string) =>
     makeStyles((theme) => ({
         root: {
             margin: theme.spacing(2),
+            //width: "100%",
             maxHeight: "95vh",
             overflow: "hidden",
 
@@ -17,7 +18,7 @@ export const useMobileStyles = (backdrop: string) =>
             //
             borderRadius: theme.spacing(2),
 
-            backgroundImage: `url(/images/w780${backdrop})`,
+            backgroundImage: `${backdrop && `url(/images/w780${backdrop})`}`,
             backgroundRepeat: "no-repeat",
             //
         },
@@ -55,6 +56,7 @@ export const useMobileStyles = (backdrop: string) =>
         cardHeaderContent: {
             //
             paddingLeft: theme.spacing(1),
+            width: "100%",
             //
         },
         cardBody: {
@@ -83,12 +85,12 @@ export const useDesktopStyles = (backdrop: string | null) =>
             //
             borderRadius: theme.spacing(2),
 
-            backgroundImage: `url(/images/w780${backdrop})`,
+            backgroundImage: `${backdrop && `url(/images/w780${backdrop})`}`,
             backgroundRepeat: "no-repeat",
             //
 
             //--delitable
-            margin: "250px auto",
+            margin: "auto",
         },
         overlay: {
             flexGrow: 1,
