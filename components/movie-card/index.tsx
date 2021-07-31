@@ -9,7 +9,7 @@ import {
     MovieGenres,
     Story,
     LoadingContexnt,
-} from "../";
+} from "..";
 
 import { useStyles } from "./styles";
 
