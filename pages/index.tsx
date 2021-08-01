@@ -1,14 +1,17 @@
 import { Api } from "../core";
 import { RandomMoviePage } from "../components";
 
-const HomePage: React.FC<{ movie: movieProps }> = ({ movie }) => {
-    return <RandomMoviePage initialMovie={movie} />;
+const HomePage: React.FC<{ response: serverResponse }> = ({ response }) => {
+    return <RandomMoviePage serverProps={response} />;
 };
 
 export const getStaticProps = async () => {
-    const movie = await Api.getRandomMovie();
+    const response = await Api.getRandomMovie();
+
     return {
-        props: { movie },
+        props: {
+            response,
+        },
     };
 };
 

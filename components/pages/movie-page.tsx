@@ -1,6 +1,6 @@
 import Head from "next/head";
 import axios, { AxiosError } from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import SwipableCard from "react-tinder-card";
 import { Button } from "@material-ui/core";
@@ -10,15 +10,20 @@ import { ReloadingIcon, MovieCard, LoadingContexnt, Error } from "..";
 
 import { useStyles } from "./styles";
 
-const MobileMovieCard: React.FC<{ initialMovie: movieProps }> = ({
-    initialMovie,
+const MobileMovieCard: React.FC<{ serverProps: serverResponse }> = ({
+    serverProps,
 }) => {
     //
-    const [movie, setMovie] = useState(initialMovie);
+    const [movie, setMovie] = useState<movieProps | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
 
     const styles = useStyles()();
+
+    useEffect(() => {
+        if (serverProps.data) setMovie(serverProps.data);
+        else if (serverProps.error) setError(serverProps.error);
+    }, [serverProps]);
 
     // fetch the api for a new movie
     const handleMovieRefresh = () => {
@@ -27,15 +32,18 @@ const MobileMovieCard: React.FC<{ initialMovie: movieProps }> = ({
          * @param error {AxiosError}
          */
         const handleResponseError = (error: AxiosError) => {
-            if (error.response?.data.error_message)
-                setError(error.response?.data.error_message);
+            console.log("caut error", error.response?.data.error);
+            if (error.response?.data.error)
+                setError(error.response?.data.error);
             else setError("Internal Server Error");
         };
 
         //reset states
         setError("");
         setIsLoading(true);
-        setMovie((prev) => ({ ...prev, id: 12, backdrop_path: "" }));
+        setMovie((prev) =>
+            prev ? { ...prev, id: 12, backdrop_path: "" } : prev
+        );
 
         axios
             .get("/api/random-movie")
@@ -48,14 +56,13 @@ const MobileMovieCard: React.FC<{ initialMovie: movieProps }> = ({
         <>
             <Head>
                 <title>
-                    {error ? error : `What about watching ${movie.title}?`}
+                    {error ? error : `What about watching ${movie?.title}?`}
                 </title>
             </Head>
             <div className={styles.root}>
                 <div className={styles.wrapper}>
-                    {error ? (
-                        <Error error={error} />
-                    ) : (
+                    {error && <Error error={error} />}
+                    {movie && !error && (
                         <>
                             <SwipableCard
                                 key={movie.id}

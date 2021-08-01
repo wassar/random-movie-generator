@@ -103,6 +103,17 @@ declare global {
     }
 
     type posterImageSize = "w92" | "w154" | "w185" | "w342" | "w500" | "w780";
+
+    interface serverResponse {
+        status: boolean;
+        movie?: movieProps;
+        error_message: string;
+    }
+    interface apiResponse {
+        status: number;
+        data?: any;
+        error?: string;
+    }
 }
 
 export {};

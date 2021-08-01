@@ -23,6 +23,14 @@ function MyApp({ Component, pageProps }: AppProps) {
                     name="viewport"
                     content="minimum-scale=1, initial-scale=1, width=device-width"
                 />
+                <meta
+                    name="description"
+                    content="A random movie generator based on themoviedb.org API built with Next.js"
+                />
+                <meta
+                    name="keywords"
+                    content="movies, generator, random, movie"
+                />
             </Head>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
