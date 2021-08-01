@@ -4,7 +4,7 @@ Simple random movie generator based on [themoviedb.org](https://themoviedb.org) 
 
 ## Getting Started
 
-## First, make sure to fill yout [THMDB API key](https://developers.themoviedb.org/3/getting-started/introduction) in .env.local
+## First, make sure to fill yout [THMDB API key](https://developers.themoviedb.org/3/getting-started/introduction) in `.env.local`
 
 start the development server:
 
