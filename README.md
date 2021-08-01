@@ -1,6 +1,6 @@
 ## About the app
 
-Simple random movie generator based on (themoviedb.org)(https://themoviedb.org) API built with Next.js
+Simple random movie generator based on [themoviedb.org](https://themoviedb.org) API built with Next.js
 
 ## Getting Started
 
@@ -26,7 +26,7 @@ npm run dev
 yarn dev
 ```
 
-## Build the app for production to ./buid folder:
+## Build the application for production mode:
 
 ```sh
 npm run build
