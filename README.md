@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Available Scripts
 
-## Start the development server:
+### `Start the development server`
 
 ```sh
 npm run dev
@@ -26,7 +26,7 @@ npm run dev
 yarn dev
 ```
 
-## Build the application for production mode:
+### `Build the application for production mode`
 
 ```sh
 npm run build
@@ -34,7 +34,7 @@ npm run build
 yarn build
 ```
 
-## Start the production server:
+### `Start the production server`
 
 ```sh
 npm start
@@ -42,7 +42,7 @@ npm start
 yarn start
 ```
 
-## Set up Next.js' built-in ESLint configuration:
+### `Set up Next.js' built-in ESLint configuration`
 
 ```sh
 npm run lint
