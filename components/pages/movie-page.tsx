@@ -22,7 +22,7 @@ const MobileMovieCard: React.FC<{ serverProps: serverResponse }> = ({
 
     useEffect(() => {
         if (serverProps.data) setMovie(serverProps.data);
-        else if (serverProps.error) setError(serverProps.error);
+        else if (serverProps.error_message) setError(serverProps.error_message);
     }, [serverProps]);
 
     // fetch the api for a new movie
@@ -32,9 +32,12 @@ const MobileMovieCard: React.FC<{ serverProps: serverResponse }> = ({
          * @param error {AxiosError}
          */
         const handleResponseError = (error: AxiosError) => {
+            console.log("errorizerd", error);
+            setMovie(null);
+            setIsLoading(false);
             console.log("caut error", error.response?.data.error);
             if (error.response?.data.error)
-                setError(error.response?.data.error);
+                setError(error.response?.data.error_message);
             else setError("Internal Server Error");
         };
 
