@@ -32,10 +32,8 @@ const MobileMovieCard: React.FC<{ serverProps: serverResponse }> = ({
          * @param error {AxiosError}
          */
         const handleResponseError = (error: AxiosError) => {
-            console.log("errorizerd", error);
             setMovie(null);
             setIsLoading(false);
-            console.log("caut error", error.response?.data.error);
             if (error.response?.data.error)
                 setError(error.response?.data.error_message);
             else setError("Internal Server Error");
